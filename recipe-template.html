@@ -1,0 +1,92 @@
+<!doctype html>
+<!--
+  RECIPE TEMPLATE — copy this file to recipes/{slug}.html for each recipe.
+  Fill in BOTH English (en) and Portuguese (pt) versions for every text block.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{NAME_EN}} · Cami's Recipes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="recipe" data-lang="en">
+  <div class="lang-switch">
+    <button type="button" data-lang-set="en" class="active">EN</button>
+    <button type="button" data-lang-set="pt">PT</button>
+    <button type="button" data-lang-set="de">DE</button>
+  </div>
+
+  <article class="recipe-page">
+    <a class="back" href="../index.html">
+      <span data-lang="en">← All recipes</span>
+      <span data-lang="pt">← Todas as receitas</span>
+      <span data-lang="de">← Alle Rezepte</span>
+    </a>
+
+    <h1>
+      <span data-lang="en">{{NAME_EN}}</span>
+      <span data-lang="pt">{{NAME_PT}}</span>
+      <span data-lang="de">{{NAME_DE}}</span>
+    </h1>
+
+    <div class="meta-row">
+      <span>
+        <strong data-lang="en">Serves</strong><strong data-lang="pt">Rende</strong><strong data-lang="de">Ergibt</strong>
+        <span data-lang="en">{{SERVES_EN}}</span><span data-lang="pt">{{SERVES_PT}}</span><span data-lang="de">{{SERVES_DE}}</span>
+      </span>
+      <span>
+        <strong data-lang="en">Prep</strong><strong data-lang="pt">Preparo</strong><strong data-lang="de">Vorbereitung</strong>
+        {{PREP_TIME}}
+      </span>
+      <span>
+        <strong data-lang="en">Cook</strong><strong data-lang="pt">Forno</strong><strong data-lang="de">Backen</strong>
+        {{COOK_TIME}}
+      </span>
+    </div>
+
+    <!-- optional hero photo -->
+    <!-- <img class="hero" src="../images/{{SLUG}}.jpg" alt="{{NAME_EN}}" /> -->
+
+    <section>
+      <h2><span data-lang="en">Ingredients</span><span data-lang="pt">Ingredientes</span><span data-lang="de">Zutaten</span></h2>
+      <ul class="ingredients" data-lang="en">
+        <li>{{ING_EN_1}}</li>
+      </ul>
+      <ul class="ingredients" data-lang="pt">
+        <li>{{ING_PT_1}}</li>
+      </ul>
+      <ul class="ingredients" data-lang="de">
+        <li>{{ING_DE_1}}</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span data-lang="en">Instructions</span><span data-lang="pt">Modo de preparo</span><span data-lang="de">Zubereitung</span></h2>
+      <ol class="steps" data-lang="en">
+        <li>{{STEP_EN_1}}</li>
+      </ol>
+      <ol class="steps" data-lang="pt">
+        <li>{{STEP_PT_1}}</li>
+      </ol>
+      <ol class="steps" data-lang="de">
+        <li>{{STEP_DE_1}}</li>
+      </ol>
+    </section>
+
+    <!-- optional notes
+    <section>
+      <h2><span data-lang="en">Notes</span><span data-lang="pt">Notas</span><span data-lang="de">Notizen</span></h2>
+      <p class="notes" data-lang="en">{{NOTES_EN}}</p>
+      <p class="notes" data-lang="pt">{{NOTES_PT}}</p>
+      <p class="notes" data-lang="de">{{NOTES_DE}}</p>
+    </section>
+    -->
+  </article>
+
+  <script src="../script.js"></script>
+</body>
+</html>

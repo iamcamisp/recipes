@@ -1,0 +1,29 @@
+{
+  "owner": "Cami",
+  "recipes": [
+    {
+      "slug": "banana-bread",
+      "name": {"en": "Banana Bread", "pt": "Pão de Banana", "de": "Bananenbrot"},
+      "category": {"en": "Bakes", "pt": "Bolos", "de": "Backen"},
+      "total_time": "1 h 10"
+    },
+    {
+      "slug": "lentil-lasagna",
+      "name": {"en": "Lentil Lasagna", "pt": "Lasanha de Lentilha", "de": "Linsen-Lasagne"},
+      "category": {"en": "Mains", "pt": "Principais", "de": "Hauptgerichte"},
+      "total_time": "1 h 20"
+    },
+    {
+      "slug": "mille-feuille",
+      "name": {"en": "Mille-feuille with Vanilla Cream", "pt": "Mil-folhas com Creme de Baunilha", "de": "Mille-Feuille mit Vanillecreme"},
+      "category": {"en": "Desserts", "pt": "Sobremesas", "de": "Desserts"},
+      "total_time": "50 min"
+    },
+    {
+      "slug": "brigadeiro",
+      "name": {"en": "Brigadeiro", "pt": "Brigadeiro", "de": "Brigadeiro"},
+      "category": {"en": "Sweets", "pt": "Doces", "de": "Süßes"},
+      "total_time": "20 min"
+    }
+  ]
+}

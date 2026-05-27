@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cami's Recipes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="index" data-lang="en">
+  <div class="lang-switch">
+    <button type="button" data-lang-set="en" class="active">EN</button>
+    <button type="button" data-lang-set="pt">PT</button>
+    <button type="button" data-lang-set="de">DE</button>
+  </div>
+
+  <header class="site-header">
+    <p class="kicker">
+      <span data-lang="en">A kitchen notebook</span>
+      <span data-lang="pt">Um caderno de cozinha</span>
+      <span data-lang="de">Ein Küchen-Notizbuch</span>
+    </p>
+    <h1>
+      <span data-lang="en">Cami's Recipes.</span>
+      <span data-lang="pt">Receitas da Cami.</span>
+      <span data-lang="de">Camis Rezepte.</span>
+    </h1>
+    <p class="sub hand">
+      <span data-lang="en">Things I cook, written down so I don't forget.</span>
+      <span data-lang="pt">Coisas que eu cozinho, anotadas pra não esquecer.</span>
+      <span data-lang="de">Sachen, die ich koche – aufgeschrieben, damit ich's nicht vergesse.</span>
+    </p>
+  </header>
+
+  <main id="grid" class="recipe-grid" aria-busy="true">
+    <p class="loading">Loading…</p>
+  </main>
+
+  <footer></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
