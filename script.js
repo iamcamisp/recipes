@@ -1,5 +1,6 @@
 // Declared up here so setLang() can safely reference DATA before load() assigns it
 let DATA = null;
+let CATEGORY_FILTER = "all";
 
 // Language state (shared with recipe pages)
 const LANG_KEY = "recipe-lang";
@@ -11,13 +12,22 @@ function setLang(lang) {
   document.querySelectorAll(".lang-switch button").forEach((b) =>
     b.classList.toggle("active", b.dataset.langSet === lang)
   );
-  // If on the index, re-render the recipe list
-  if (typeof renderList === "function" && DATA) renderList();
+  // If on the index, re-render the recipe list and filter bar
+  if (typeof renderList === "function" && DATA) {
+    buildFilterBar();
+    renderList();
+  }
 }
 
 document.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-lang-set]");
-  if (t) setLang(t.dataset.langSet);
+  const lang = e.target.closest("[data-lang-set]");
+  if (lang) { setLang(lang.dataset.langSet); return; }
+  const cat = e.target.closest("[data-cat]");
+  if (cat) {
+    CATEGORY_FILTER = cat.dataset.cat;
+    buildFilterBar();
+    renderList();
+  }
 });
 
 // Apply on load (everywhere)
@@ -31,6 +41,7 @@ async function load() {
   try {
     const res = await fetch(`recipes.json?v=${Date.now()}`);
     DATA = await res.json();
+    buildFilterBar();
     renderList();
   } catch (err) {
     grid.innerHTML = `<p class="loading">Could not load recipes.</p>`;
@@ -40,6 +51,32 @@ async function load() {
   }
 }
 
+const ALL_LABEL = { en: "All", pt: "Todas", de: "Alle" };
+
+function categoryKey(cat) {
+  if (!cat) return "";
+  if (typeof cat === "string") return cat;
+  return cat.en || cat.pt || cat.de || "";
+}
+
+function buildFilterBar() {
+  const bar = document.getElementById("filter-bar");
+  if (!bar || !DATA) return;
+  const lang = getLang();
+  // Collect unique categories in the order they first appear
+  const seen = new Map();
+  for (const r of DATA.recipes || []) {
+    const key = categoryKey(r.category);
+    if (key && !seen.has(key)) seen.set(key, r.category);
+  }
+  const all = `<button type="button" data-cat="all" class="${CATEGORY_FILTER === "all" ? "active" : ""}">${escape(ALL_LABEL[lang] || ALL_LABEL.en)}</button>`;
+  const rest = Array.from(seen.entries()).map(([key, cat]) => {
+    const label = pickLang(cat, lang);
+    return `<button type="button" data-cat="${escapeAttr(key)}" class="${CATEGORY_FILTER === key ? "active" : ""}">${escape(label)}</button>`;
+  });
+  bar.innerHTML = [all, ...rest].join("");
+}
+
 const EMPTY_MSG = { en: "No recipes yet.", pt: "Sem receitas ainda.", de: "Noch keine Rezepte." };
 
 function renderList() {
@@ -47,6 +84,7 @@ function renderList() {
   if (!grid || !DATA) return;
   const lang = getLang();
   const recipes = (DATA.recipes || [])
+    .filter((r) => CATEGORY_FILTER === "all" || categoryKey(r.category) === CATEGORY_FILTER)
     .slice()
     .sort((a, b) => pickLang(a.name, lang).localeCompare(pickLang(b.name, lang), lang));
   if (!recipes.length) {
