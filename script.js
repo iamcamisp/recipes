@@ -1,3 +1,6 @@
+// Declared up here so setLang() can safely reference DATA before load() assigns it
+let DATA = null;
+
 // Language state (shared with recipe pages)
 const LANG_KEY = "recipe-lang";
 function getLang() { return localStorage.getItem(LANG_KEY) || "en"; }
@@ -21,8 +24,6 @@ document.addEventListener("click", (e) => {
 setLang(getLang());
 
 // ─── Index page ───────────────────────────────
-
-let DATA = null;
 
 async function load() {
   const grid = document.getElementById("grid");
