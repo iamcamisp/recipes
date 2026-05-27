@@ -24,6 +24,16 @@
       "name": {"en": "Brigadeiro", "pt": "Brigadeiro", "de": "Brigadeiro"},
       "category": {"en": "Sweets", "pt": "Doces", "de": "Süßes"},
       "total_time": "20 min"
+    },
+    {
+      "slug": "goat-cheese-fig-jam",
+      "name": {
+        "en": "Baked Goat Cheese with Fig Jam & Pecans",
+        "pt": "Patê de Queijo de Cabra com Geleia de Figo",
+        "de": "Ziegenkäse-Aufstrich mit Feigenkonfitüre"
+      },
+      "category": {"en": "Starters", "pt": "Entradas", "de": "Vorspeisen"},
+      "total_time": "15 min"
     }
   ]
 }
